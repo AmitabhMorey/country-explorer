@@ -6,6 +6,7 @@ import { AuroraBackground } from '@/components/aurora-background';
 import type { Reel } from '@/types';
 import { cn } from '@/lib/utils';
 import { socialAPI } from '@/services/social-api';
+import { ThemeToggleButton } from '@/components/ui/skiper-ui/skiper26';
 
 interface ReelDetailPageProps {
   reel: Reel;
@@ -16,16 +17,16 @@ interface ReelDetailPageProps {
 export const ReelDetailPage = ({ reel, countryName, onBack }: ReelDetailPageProps) => {
   // Related reels would be fetched here
   // const relatedReels = socialAPI.getReels(countryName, 4);
-  
+
   const formatNumber = (num: number): string => {
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
     if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
     return num.toString();
   };
 
-  const PlatformIcon = reel.platform === 'instagram' ? Instagram : 
-                      reel.platform === 'youtube' ? Youtube : 
-                      () => <span className="text-lg font-bold">TT</span>;
+  const PlatformIcon = reel.platform === 'instagram' ? Instagram :
+    reel.platform === 'youtube' ? Youtube :
+      () => <span className="text-lg font-bold">TT</span>;
 
   return (
     <AuroraBackground className="min-h-screen">
@@ -50,9 +51,12 @@ export const ReelDetailPage = ({ reel, countryName, onBack }: ReelDetailPageProp
           <span>Back</span>
         </motion.button>
 
-        <div className="flex items-center gap-2">
-          <PlatformIcon className="h-5 w-5 text-primary" />
-          <span className="font-semibold capitalize">{reel.platform}</span>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <PlatformIcon className="h-5 w-5 text-primary" />
+            <span className="font-semibold capitalize">{reel.platform}</span>
+          </div>
+          <ThemeToggleButton />
         </div>
       </motion.nav>
 
@@ -71,7 +75,7 @@ export const ReelDetailPage = ({ reel, countryName, onBack }: ReelDetailPageProp
                 alt={reel.description}
                 className="w-full h-full object-cover"
               />
-              
+
               {/* Play Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/30">
                 <motion.a
@@ -146,10 +150,10 @@ export const ReelDetailPage = ({ reel, countryName, onBack }: ReelDetailPageProp
 
             {/* Posted Date */}
             <p className="text-muted-foreground text-sm">
-              Posted on {new Date(reel.postedAt).toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+              Posted on {new Date(reel.postedAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
               })}
             </p>
 
@@ -171,7 +175,7 @@ export const ReelDetailPage = ({ reel, countryName, onBack }: ReelDetailPageProp
                 <ExternalLink className="h-5 w-5" />
                 <span>View on {reel.platform}</span>
               </motion.a>
-              
+
               <motion.button
                 className={cn(
                   'flex items-center justify-center gap-2',

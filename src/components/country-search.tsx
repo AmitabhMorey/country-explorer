@@ -12,7 +12,7 @@ interface CountrySearchProps {
 }
 
 const popularCountries = [
-  'Japan', 'Italy', 'Brazil', 'Thailand', 'France', 'Australia', 
+  'Japan', 'Italy', 'Brazil', 'Thailand', 'France', 'Australia',
   'Spain', 'Germany', 'India', 'Canada', 'United Kingdom', 'Mexico',
   'South Korea', 'Vietnam', 'Greece', 'Portugal', 'Netherlands', 'Switzerland'
 ];
@@ -76,8 +76,8 @@ export const CountrySearch = ({ onSearch, isLoading = false, className }: Countr
           className={cn(
             'relative flex items-center rounded-2xl bg-card backdrop-blur-md',
             'border-2 transition-all duration-300',
-            isFocused 
-              ? 'border-primary/50 shadow-[0_0_30px_hsl(var(--primary)/0.3)]' 
+            isFocused
+              ? 'border-primary/50 shadow-[0_0_30px_color-mix(in_srgb,var(--primary),transparent_70%)]'
               : 'border-border hover:border-primary/30'
           )}
           initial={{ opacity: 0, y: 20 }}
@@ -138,7 +138,7 @@ export const CountrySearch = ({ onSearch, isLoading = false, className }: Countr
               'bg-primary text-primary-foreground',
               'transition-all duration-300',
               'disabled:opacity-50 disabled:cursor-not-allowed',
-              'hover:bg-primary/90 hover:shadow-[0_0_20px_hsl(var(--primary)/0.5)]'
+              'hover:bg-primary/90 hover:shadow-[0_0_20px_color-mix(in_srgb,var(--primary),transparent_50%)]'
             )}
             whileTap={{ scale: 0.95 }}
           >
