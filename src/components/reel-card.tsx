@@ -124,8 +124,8 @@ export const ReelCard = ({ reel, className }: ReelCardProps) => {
         className="absolute inset-0 pointer-events-none rounded-xl"
         animate={{
           boxShadow: isHovered
-            ? '0 0 30px hsl(var(--primary) / 0.4), inset 0 0 30px hsl(var(--primary) / 0.1)'
-            : '0 0 0px hsl(var(--primary) / 0)',
+            ? '0 0 30px color-mix(in srgb, var(--primary), transparent 60%), inset 0 0 30px color-mix(in srgb, var(--primary), transparent 90%)'
+            : '0 0 0px color-mix(in srgb, var(--primary), transparent 100%)',
         }}
         transition={{ duration: 0.3 }}
       />

@@ -1,12 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Calendar, 
-  Clock, 
-  MapPin, 
-  Building2, 
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  MapPin,
+  Building2,
   ExternalLink,
   CheckCircle2,
   DollarSign,
@@ -22,6 +22,7 @@ import type { Opportunity } from '@/types';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { ThemeToggleButton } from '@/components/ui/skiper-ui/skiper26';
 
 interface OpportunityDetailPageProps {
   opportunity: Opportunity;
@@ -96,9 +97,12 @@ export const OpportunityDetailPage = ({ opportunity, onBack }: OpportunityDetail
           <span>Back to Opportunities</span>
         </motion.button>
 
-        <Badge variant="outline" className={getFundingBadgeColor()}>
-          {getFundingLabel()}
-        </Badge>
+        <div className="flex items-center gap-4">
+          <Badge variant="outline" className={getFundingBadgeColor()}>
+            {getFundingLabel()}
+          </Badge>
+          <ThemeToggleButton />
+        </div>
       </motion.nav>
 
       {/* Main Content */}
@@ -134,7 +138,7 @@ export const OpportunityDetailPage = ({ opportunity, onBack }: OpportunityDetail
             <Building2 className="h-5 w-5" />
             <span className="text-lg">{opportunity.organization}</span>
             {opportunity.organizationWebsite && (
-              <a 
+              <a
                 href={opportunity.organizationWebsite}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -266,7 +270,7 @@ export const OpportunityDetailPage = ({ opportunity, onBack }: OpportunityDetail
               Apply Now
             </a>
           </Button>
-          
+
           <Button
             variant="outline"
             size="lg"
@@ -283,7 +287,7 @@ export const OpportunityDetailPage = ({ opportunity, onBack }: OpportunityDetail
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          Please verify all details on the official website before applying. 
+          Please verify all details on the official website before applying.
           We are not responsible for changes made by the program organizers.
         </motion.p>
       </main>

@@ -98,7 +98,7 @@ export const OpportunityCard = ({ opportunity, className }: OpportunityCardProps
               {getTypeIcon()}
             </div>
             <div>
-              <span className="text-xs text-gray-400 uppercase tracking-wider">
+              <span className="text-xs text-muted-foreground uppercase tracking-wider">
                 {getTypeLabel()}
               </span>
             </div>
@@ -109,7 +109,7 @@ export const OpportunityCard = ({ opportunity, className }: OpportunityCardProps
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-white group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-semibold mb-2 line-clamp-2 text-foreground group-hover:text-primary transition-colors">
           {opportunity.title}
         </h3>
 

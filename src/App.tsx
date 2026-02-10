@@ -19,24 +19,24 @@ function App() {
 
   const handleSearch = useCallback(async (countryName: string) => {
     setIsLoading(true);
-    
+
     try {
       // Fetch country info from travel API
       const countryInfo = await travelAPI.getCountryInfo(countryName);
-      
+
       if (countryInfo) {
         // Fetch reels from social API
         const reels = await socialAPI.getReels(countryName, 8);
-        
+
         // Fetch opportunities from travel API
         const opportunities = await travelAPI.getOpportunities(countryName);
-        
+
         const data: CountryData = {
           info: countryInfo,
           reels,
           opportunities,
         };
-        
+
         setCountryData(data);
         setPageState('results');
         toast.success(`Welcome to ${countryInfo.name}!`, {
@@ -105,7 +105,7 @@ function App() {
             <LandingPage onSearch={handleSearch} isLoading={isLoading} />
           </motion.div>
         )}
-        
+
         {pageState === 'results' && countryData && (
           <motion.div
             key="results"
@@ -114,15 +114,15 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <ResultsPage 
-              countryData={countryData} 
+            <ResultsPage
+              countryData={countryData}
               onBack={handleBack}
               onReelClick={handleReelClick}
               onOpportunityClick={handleOpportunityClick}
             />
           </motion.div>
         )}
-        
+
         {pageState === 'reel-detail' && selectedReel && countryData && (
           <motion.div
             key="reel-detail"
@@ -131,14 +131,14 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <ReelDetailPage 
+            <ReelDetailPage
               reel={selectedReel}
               countryName={countryData.info.name}
               onBack={handleBack}
             />
           </motion.div>
         )}
-        
+
         {pageState === 'opportunity-detail' && selectedOpportunity && (
           <motion.div
             key="opportunity-detail"
@@ -147,21 +147,21 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <OpportunityDetailPage 
+            <OpportunityDetailPage
               opportunity={selectedOpportunity}
               onBack={handleBack}
             />
           </motion.div>
         )}
       </AnimatePresence>
-      
-      <Toaster 
+
+      <Toaster
         position="top-center"
         toastOptions={{
           style: {
-            background: 'hsl(var(--card))',
-            color: 'hsl(var(--card-foreground))',
-            border: '1px solid hsl(var(--border))',
+            background: 'var(--card)',
+            color: 'var(--card-foreground)',
+            border: '1px solid var(--border)',
           },
         }}
       />

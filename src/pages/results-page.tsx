@@ -9,6 +9,7 @@ import { OpportunityCard } from '@/components/opportunity-card';
 import type { CountryData, Reel, Opportunity } from '@/types';
 import { cn } from '@/lib/utils';
 import { socialAPI } from '@/services/social-api';
+import { ThemeToggleButton } from '@/components/ui/skiper-ui/skiper26';
 
 interface ResultsPageProps {
   countryData: CountryData;
@@ -17,11 +18,11 @@ interface ResultsPageProps {
   onOpportunityClick: (opportunity: Opportunity) => void;
 }
 
-export const ResultsPage = ({ 
-  countryData, 
-  onBack, 
+export const ResultsPage = ({
+  countryData,
+  onBack,
   onReelClick,
-  onOpportunityClick 
+  onOpportunityClick
 }: ResultsPageProps) => {
   const { info, reels, opportunities } = countryData;
   const socialLinks = socialAPI.getSocialSearchLinks(info.name);
@@ -49,9 +50,12 @@ export const ResultsPage = ({
           <span>Back to Search</span>
         </motion.button>
 
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">{info.flag}</span>
-          <span className="font-semibold hidden sm:inline">{info.name}</span>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">{info.flag}</span>
+            <span className="font-semibold hidden sm:inline">{info.name}</span>
+          </div>
+          <ThemeToggleButton />
         </div>
       </motion.nav>
 
@@ -92,7 +96,7 @@ export const ResultsPage = ({
               </motion.div>
             </div>
           </div>
-          
+
           <motion.p
             className="text-lg text-muted-foreground max-w-3xl"
             initial={{ opacity: 0 }}
@@ -147,7 +151,7 @@ export const ResultsPage = ({
                 </p>
               </div>
             </div>
-            
+
             <div className="flex items-center gap-2">
               {socialLinks.slice(0, 3).map((link) => (
                 <a
@@ -186,17 +190,17 @@ export const ResultsPage = ({
             <div className={cn(
               'p-2 rounded-lg bg-gradient-to-br from-emerald-500/20 to-cyan-500/20'
             )}>
-              <svg 
-                className="h-5 w-5 text-emerald-400" 
-                fill="none" 
-                viewBox="0 0 24 24" 
+              <svg
+                className="h-5 w-5 text-emerald-400"
+                fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
             </div>

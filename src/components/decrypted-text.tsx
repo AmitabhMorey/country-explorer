@@ -89,8 +89,8 @@ export const DecryptedText = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
       className={cn(
-        'font-mono tracking-tight',
-        isDecoding ? 'text-indigo-400' : 'text-white',
+        'tracking-tight',
+        isDecoding ? 'text-primary' : 'text-foreground',
         className
       )}
     >
